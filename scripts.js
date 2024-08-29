@@ -7,7 +7,7 @@ form.addEventListener("submit", (event) => {
   const { dividend, divider } = Object.fromEntries(entries);
   
   if (isNaN(Number(dividend)) || isNaN(Number(divider))) {
-    document.body.innerText = "<h1>Something critical went wrong. Please reload the page</h1>"
+    document.body.innerHTML = "<h1>Something critical went wrong. Please reload the page</h1>"
     throw new InvalidNumberError("failed to parse number");
 
   }else if (divider.length > 0 && dividend.length > 0) {
