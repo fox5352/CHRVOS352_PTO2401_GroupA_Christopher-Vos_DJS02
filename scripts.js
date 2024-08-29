@@ -7,13 +7,13 @@ form.addEventListener("submit", (event) => {
   const { dividend, divider } = Object.fromEntries(entries);
   
   if (isNaN(Number(dividend)) || isNaN(Number(divider))) {
-    document.body.innerText = "Something critical went wrong. Please reload the page"
-    throw new Error("failed to parse number");
+    document.body.innerText = "<h1>Something critical went wrong. Please reload the page</h1>"
+    throw new InvalidNumberError("failed to parse number");
 
   }else if (divider.length > 0 && dividend.length > 0) {
     try {
       if (dividend == 0 | divider == 0) {
-        throw new RangeError("zero divider");
+        throw new ZeroDivisionError("zero divider");
 
       }else {
         result.innerText = Math.floor(dividend / divider);
@@ -29,3 +29,21 @@ form.addEventListener("submit", (event) => {
 
   }
 });
+
+
+// --------------- Error types ---------------
+class ZeroDivisionError extends Error {
+  constructor(message, extra) {
+    super(message);
+    this.name = "ZeroDivisionError";
+    this.extra = extra;
+  }
+}
+
+class InvalidNumberError extends Error {
+  constructor(message, extra) {
+    super(message);
+    this.name = "InvalidNumberError";
+    this.extra = extra;
+  }
+}
