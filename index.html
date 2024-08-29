@@ -14,11 +14,11 @@
     <form data-form="data-form">
       <label
         ><span>Dividend</span>
-        <input name="dividend" />
+        <input name="dividend" pattern="[0-9]+" title="Please enter one or more digits"/>
       </label>
       <label>
         <span>Divider</span>
-        <input name="divider" />
+        <input name="divider" pattern="[0-9]+" title="Please enter one or more digits"/>
       </label>
       <button type="submit">Calculate</button>
     </form>
